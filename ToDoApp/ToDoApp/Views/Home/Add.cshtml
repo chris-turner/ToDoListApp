@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Add Task";
+}
+
+    <div class="text-center">
+        <h4 class="display-4">ToDoList - Add a Task</h4>
+    </div>
+
+@using (Html.BeginForm("AddTask", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-lg-8 col-md-8">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <p>Description </p><input type="text" name="taskDesc" id="taskDesc" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                        <label for="file">Image</label>
+                        <input type="file" name="file" id="file" style="width: 100%;"  accept="image/*"  />
+                </div>
+                    
+            </div>
+
+            <div class="row todobuttonpt">
+                <div class="col-lg-8 col-md-8">
+                    <input type="submit" class="btn-secondary " value="Add" />
+                </div>
+            </div>
+        </div>
+            </div>
+            }
+

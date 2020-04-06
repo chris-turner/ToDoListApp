@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Pending Tasks";
+}
+@model ToDoApp.Models.ToDoList
+
+<div class="text-center">
+    <h3 class="display-4">ToDoList - Pending Tasks</h3>
+</div>
+
+@foreach (var task in Model.toDoTasks)
+{
+<div class="todotask row">
+    <div class="col-lg-2 col-md-2">
+        @task.TaskDescription
+    </div>
+    <div class="col-lg-2 col-md-2">
+    @if (task.TaskImageName != "")
+    {
+        <a href="~/@task.TaskImageName"><img class="image" src="~/@task.TaskImageName" /></a>
+    }
+</div>
+    
+        @using (Html.BeginForm("updateTaskStatusComplete", "Home", FormMethod.Post, new { @class = "todobtn" }))
+        {
+
+            <input class="hidden" value="@task.TaskID" name="taskID" id="taskID" />
+            <input type="submit" value="✓" class="btn-sm btn-success" />
+        }
+   
+
+        @using (Html.BeginForm("DeleteTask", "Home", FormMethod.Post, new { @class = "todobtn" }))
+        {
+
+            <input class="hidden" value="@task.TaskID" name="taskID" id="taskID" />
+            <input type="submit" value="X" class="btn-sm btn-danger" />
+        }
+    
+    </div>
+    }
+
+
